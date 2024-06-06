@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { FaArrowRight } from 'react-icons/fa';
 
 function App() {
+  const [name, setName] = useState('');
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  }
+
+  const handleNextClick = () => {
+    console.log("User name: ", name);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <h1>Queue Management System</h1>
+        <input type="text" value={name} onChange={handleNameChange} placeholder="Insira o Seu Nome" />
+        <button className="next-button" onClick={handleNextClick}>
+          Próximo
+          <FaArrowRight className="arrow-icon"/>
+        </button>
+      </div>
     </div>
   );
 }
