@@ -4,24 +4,29 @@ import './ServiceOptions.css';
 
 const ServiceOptions = () => {
   const navigate = useNavigate();
-  const [selectedService, setSelectedService] = useState('');
+  const [fadeOut, setFadeOut] = useState(false);
 
   const handleServiceSelect = (service) => {
-    setSelectedService(service);
     localStorage.setItem('selectedService', service);
 
     const userName = localStorage.getItem('userName');
+    let queuePosition = parseInt(localStorage.getItem('queuePosition'), 10)
 
     console.log('Usuário: ', userName);
-    console.log('Service: ', selectedService);
-    console.log('Queue Position: 1');
+    console.log('Serviço: ', service);
+    console.log('Posição na Fila: ', queuePosition);
+
+    localStorage.setItem('queuePosition', queuePosition+1)
     
-    navigate('/ticket');
+    setFadeOut(true);
+    setTimeout(() => {
+      navigate('/ticket');
+    }, 300);
 
   };    
 
   return (
-    <div className="service-options">
+    <div className={`service-options ${fadeOut ? 'fade-out' : ''}`}>
       <h1>Selecione o Serviço</h1>
       <ul>
         <li onClick={() => handleServiceSelect('NETPLUS')}>NETPLUS</li>

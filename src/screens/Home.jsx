@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
@@ -8,6 +8,12 @@ const Home = () => {
   const [fadeOut, setFadeOut] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if(!localStorage.getItem('queuePosition')) {
+      localStorage.setItem('queuePosition', 1)
+    }
+  }, []);
+
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -16,7 +22,6 @@ const Home = () => {
     setFadeOut(true);
     setTimeout(() => {
       localStorage.setItem('userName', name);
-      localStorage.setItem('selectedService', '');
       navigate('/services');
     }, 300)
   };
