@@ -5,6 +5,7 @@ import './Home.css';
 
 const Home = () => {
   const [name, setName] = useState('');
+  const [fadeOut, setFadeOut] = useState(false);
   const navigate = useNavigate();
 
   const handleNameChange = (e) => {
@@ -12,21 +13,22 @@ const Home = () => {
   };
 
   const handleNextClick = () => {
-    localStorage.setItem('userName', name);
-    navigate('/services');
+    setFadeOut(true);
+    setTimeout(() => {
+      localStorage.setItem('userName', name);
+      localStorage.setItem('selectedService', '');
+      navigate('/services');
+    }, 300)
   };
 
   return (
-    <div className="container">
+    <div className={`container ${fadeOut ? 'fade-out' : ''}`}>
       <h1>Queue Management System</h1>
-      <input
-        type="text"
-        value={name}
-        onChange={handleNameChange}
-        placeholder="Enter your name"
+      <input type="text" value={name} onChange={handleNameChange} placeholder="Insira o Seu Nome"
       />
       <button className="next-button" onClick={handleNextClick}>
-        Próximo <FaArrowRight className="arrow-icon" />
+        Próximo 
+        <FaArrowRight className="arrow-icon" />
       </button>
     </div>
   );

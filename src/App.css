@@ -5,48 +5,4 @@
   align-items: center;
   height: 100vh;
   background-color: #f0f0f0;
-  transition: opacity 0.3s;
-}
-
-.container {
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10 rgba(0 ,0, 0, 0.1);
-}
-
-.next-button {
-  background-color: rgb(52, 147, 225);
-  color: #000;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-}
-
-.next-button .arrow-icon {
-  margin-left: 10px;
-}
-
-.next-button:hover {
-  background-color: #6dc6e4;
-}
-
-h1 {
-  margin-bottom: 20px;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.fade-out {
-  opacity: 0;
 }
