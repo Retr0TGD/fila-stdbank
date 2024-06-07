@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0;
+  background-color: white;
 }
 
 .service-options {
@@ -40,7 +40,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0;
+  background-color: white;
   transition: opacity 0.3s;
 }
 
@@ -80,4 +80,81 @@ input {
 .next-button:hover {
   background-color: #87d6f0;
 }
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  font-size: 18px;
+}
+
+th, td {
+  border: none;
+  padding: 12px;
+}
+
+th {
+  text-align: left;
+}
+
+tbody tr {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+tbody tr td:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+tbody tr td:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+td:nth-child(3) {
+  color: #22a4d0;
+}
+
+td:nth-child(2) {
+  background-color: rgb(67, 162, 240);
+}
+
+.dashboard-container {
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+}
   
+.dashboard-content {
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+}
+  
+.left-block {
+  flex: 7;
+  margin-right: 20px;
+  padding: 20px;
+  border-radius: 8px;
+}
+  
+.upper-block, .lower-block {
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+  
+.right-block {
+  flex: 3;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%
+}
+
+.std-bank-logo {
+  max-width: 300px;
+  height: auto;
+}

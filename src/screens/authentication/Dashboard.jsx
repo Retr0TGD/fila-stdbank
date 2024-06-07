@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Iframe from 'react-iframe';
-import './Dashboard.css';
+import StandardBankLogo from '../../assets/stdbanklogo.jpg';
+import '../../App.css';
 
 const Dashboard = () => {
   const [queue, setQueue] = useState([]);
@@ -32,7 +33,6 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <h1>Dashboard</h1>
       <div className="dashboard-content">
         <div className="left-block">
           <div className="upper-block">
@@ -41,7 +41,7 @@ const Dashboard = () => {
               <div>
                 <p>Serviço: {queue[0].service}</p>
                 <p>Balcão: {getCounter(queue[0].service)}</p>
-                <p>Posicão na fila: 1</p>
+                <p>Senha: {queue[0].ticketCode}</p>
               </div>
             ) : (
               <p>Nenhum cliente na fila</p>
@@ -49,18 +49,29 @@ const Dashboard = () => {
           </div>
           <div className="lower-block">
             <h2>Publicidade</h2>
-            <Iframe url="https://www.youtube.com/watch?v=ESZU5j-NHpA" width="100%" height="200px" id="myId" className="myClassname" display="initial" position="relative"/>
+            <Iframe url="https://www.youtube.com/watch?v=KaMpT4pJI8k" />
           </div>
         </div>
         <div className="right-block">
-          <h2>Standard Bank</h2>
-          <ul>
-            {queue.map((client, index) => (
-              <li key={index}>
-                {client.name} - Serviço: {client.service} - Balcão: {getCounter(client.service)} - Posicão na fila: {index + 1}
-              </li>
-            ))}
-          </ul>
+          <img src={StandardBankLogo} alt="Standard Bank" className="std-bank-logo" />
+          <table>
+            <thead>
+              <tr>
+                <th>Serviço</th>
+                <th>Balcão</th>
+                <th>Senha</th>
+              </tr>
+            </thead>
+            <tbody>
+              {queue.map((client, index) => (
+                <tr key={index}>
+                  <td>{client.service}</td>
+                  <td>{getCounter(client.service)}</td>
+                  <td>{client.ticketCode}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

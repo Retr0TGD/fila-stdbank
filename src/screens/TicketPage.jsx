@@ -6,7 +6,7 @@ const TicketPage = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      navigate('/');
+      navigate('/home');
     }, 3000);
   }, [navigate]);
 

@@ -6,6 +6,7 @@ import '../../App.css';
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     const handleUsernameChange = (e) => {
@@ -21,7 +22,7 @@ const Login = () => {
             localStorage.setItem('isAdminAuthenticated', 'true');
             navigate('/dashboard');
         } else {
-            document.write('Invalid username or password');
+            setErrorMessage('Incorrect username or password');
         }
     };
 
@@ -31,6 +32,7 @@ const Login = () => {
             <input type="text" value={username} onChange={handleUsernameChange} placeholder='username' />
             <input type="password" value={password} onChange={handlePasswordChange} placeholder='password' />
             <button className="next-button" onClick={handleLoginClick}>Login</button>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
     )
 }
