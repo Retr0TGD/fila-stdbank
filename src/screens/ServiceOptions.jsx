@@ -1,22 +1,32 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './ServiceOptions.css';
+import '../App.css';
 
 const ServiceOptions = () => {
   const navigate = useNavigate();
   const [fadeOut, setFadeOut] = useState(false);
 
   const handleServiceSelect = (service) => {
-    localStorage.setItem('selectedService', service);
 
     const userName = localStorage.getItem('userName');
-    let queuePosition = parseInt(localStorage.getItem('queuePosition'), 10)
+
+    const queue = JSON.parse(localStorage.getItem('queue')) || [];
+
+    const queuePosition = queue.length+1;
+
+    const newClient = {
+      name: userName,
+      service,
+      position: queuePosition
+    };
+
+    queue.push(newClient);
+
+    localStorage.setItem('queue', JSON.stringify(queue));
 
     console.log('Usuário: ', userName);
     console.log('Serviço: ', service);
     console.log('Posição na Fila: ', queuePosition);
-
-    localStorage.setItem('queuePosition', queuePosition+1)
     
     setFadeOut(true);
     setTimeout(() => {
