@@ -16,6 +16,19 @@ const Dashboard = () => {
 
     const queueData = JSON.parse(localStorage.getItem('queue')) || [];
     setQueue(queueData);
+
+    const handleStorageChange = (event) => {
+      if(event.key === 'queue') {
+        const updateQueue = JSON.parse(event.newValue) || [];
+        setQueue(updateQueue);
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
   }, [navigate]);
 
   const getCounter = (service) => {
@@ -49,7 +62,7 @@ const Dashboard = () => {
           </div>
           <div className="lower-block">
             <h2>Publicidade</h2>
-            <Iframe url="https://www.youtube.com/watch?v=KaMpT4pJI8k" />
+            <Iframe src="https://www.youtube.com/embed/KaMpT4pJI8k?si=PwvR4zbwYX9zs2oc" title="Publicidade" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
           </div>
         </div>
         <div className="right-block">
